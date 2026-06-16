@@ -1,0 +1,59 @@
+.sectionTitle {
+  font-size: var(--fs-2xl);
+  max-width: 18ch;
+  margin-bottom: var(--sp-2);
+}
+.head .sectionTitle, .text-center .sectionTitle { margin-inline: 0; }
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-5);
+}
+
+.journeyGrid { margin-top: var(--sp-2); }
+
+/* Golden-ratio split: 61.8 / 38.2 */
+.split {
+  display: grid;
+  gap: var(--sp-5);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .split { grid-template-columns: 1fr 0.78fr; }
+}
+.splitMedia { position: relative; border-radius: var(--radius); overflow: hidden; }
+.splitImg {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius);
+}
+.splitGlyph {
+  position: absolute; bottom: 18px; right: 22px;
+  color: #f4ecdd; font-size: 2.4rem; opacity: 0.9;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.6);
+}
+.splitBody { max-width: 52ch; }
+.proseP { color: var(--ink-soft); }
+
+/* Final CTA band */
+.cta {
+  position: relative;
+  margin-top: var(--sp-7);
+  padding-block: var(--sp-8);
+  display: flex; align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+.ctaBg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: -2;
+}
+.ctaScrim {
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(8,7,6,0.7), rgba(8,7,6,0.82));
+}
+.ctaInner { text-align: center; max-width: 760px; }
+.ctaTitle { color: #fff; font-size: var(--fs-2xl); text-shadow: 0 4px 24px rgba(0,0,0,0.5); }
+.ctaSub { color: #ece3d2; font-size: var(--fs-md); margin-bottom: var(--sp-4); }

@@ -1,0 +1,23 @@
+.layout { display: grid; gap: var(--sp-5); }
+@media (min-width: 900px) { .layout { grid-template-columns: 1fr 320px; align-items: start; } }
+
+.formCol {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--sp-5);
+}
+@media (max-width: 640px) { .formCol { padding: var(--sp-4); } }
+
+.aside {
+  background: var(--bg-elev-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  position: sticky; top: 96px;
+}
+.asideTitle { font-size: var(--fs-lg); }
+.asideText { color: var(--ink-soft); font-size: var(--fs-small); margin-bottom: var(--sp-3); }
+.assure { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6em; }
+.assure li { color: var(--ink-soft); font-size: var(--fs-small); padding-left: 1.4em; position: relative; }
+.assure li::before { content: '\2625'; position: absolute; left: 0; color: var(--accent); }

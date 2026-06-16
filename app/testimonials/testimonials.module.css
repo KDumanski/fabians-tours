@@ -1,0 +1,22 @@
+.masonry {
+  columns: 1;
+  column-gap: var(--sp-4);
+}
+@media (min-width: 680px) { .masonry { columns: 2; } }
+@media (min-width: 1040px) { .masonry { columns: 3; } }
+
+.card {
+  break-inside: avoid;
+  margin-bottom: var(--sp-4);
+  padding: var(--sp-4);
+  background: var(--bg-elev-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+.card:hover { transform: translateY(-4px); border-color: var(--line-strong); }
+.mark { font-family: var(--font-display); font-size: 3rem; line-height: 0.4; color: var(--accent); opacity: 0.5; display: block; height: 0.5em; }
+.quote { font-family: var(--font-display); font-style: italic; font-size: var(--fs-md); line-height: 1.5; color: var(--ink); margin: var(--sp-3) 0; }
+.cap { display: flex; flex-direction: column; }
+.name { font-weight: 700; color: var(--ink); }
+.from { color: var(--ink-faint); font-size: var(--fs-tiny); text-transform: uppercase; letter-spacing: 0.1em; }

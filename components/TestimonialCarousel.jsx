@@ -1,0 +1,45 @@
+'use client';
+import { useState } from 'react';
+import { TESTIMONIALS } from '@/lib/testimonials';
+import styles from './TestimonialCarousel.module.css';
+
+export default function TestimonialCarousel() {
+  const [i, setI] = useState(0);
+  const n = TESTIMONIALS.length;
+  const go = (d) => setI((prev) => (prev + d + n) % n);
+  const t = TESTIMONIALS[i];
+
+  return (
+    <div className={styles.wrap}>
+      <button className={`${styles.arrow} ${styles.left}`} onClick={() => go(-1)} aria-label="Previous testimonial">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </button>
+
+      <figure className={styles.card} key={i}>
+        <span className={styles.quoteMark} aria-hidden="true">&ldquo;</span>
+        <blockquote className={styles.quote}>{t.quote}</blockquote>
+        <figcaption className={styles.cap}>
+          <span className={styles.name}>{t.name}</span>
+          <span className={styles.from}>{t.from} &middot; {t.journey}</span>
+        </figcaption>
+      </figure>
+
+      <button className={`${styles.arrow} ${styles.right}`} onClick={() => go(1)} aria-label="Next testimonial">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </button>
+
+      <div className={styles.dots} role="tablist" aria-label="Testimonial navigation">
+        {TESTIMONIALS.map((_, d) => (
+          <button
+            key={d}
+            className={`${styles.dot} ${d === i ? styles.dotActive : ''}`}
+            onClick={() => setI(d)}
+            aria-label={`Go to testimonial ${d + 1}`}
+            aria-selected={d === i}
+            role="tab"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}

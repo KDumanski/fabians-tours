@@ -1,0 +1,250 @@
+/* ============================================================================
+   FABIAN'S TOURS — Global design tokens & base styles
+   Cinematic-luxury Egypt theme. Full light + dark mode.
+   Naming nods to ancient Egypt: --papyrus, --lapis, --gilt, --obsidian, --carnelian.
+   Contrast: every text/bg pair below is chosen to clear WCAG AA (>=4.5:1 body,
+   >=3:1 large text). Verified post-build.
+   ============================================================================ */
+
+:root {
+  /* ---- Brand constants (theme-independent) ---- */
+  --gilt: #c9a227;          /* gold leaf — primary accent */
+  --gilt-bright: #e6c453;   /* lighter gold for dark-bg text/links */
+  --carnelian: #b4472e;     /* burnt sienna / carnelian — secondary accent */
+  --lapis: #1f5673;         /* lapis lazuli blue */
+  --turquoise: #2a9d8f;     /* faience turquoise */
+
+  /* ---- Type scale (px floor = 13) ---- */
+  --fs-tiny: 0.8125rem;   /* 13px hard floor */
+  --fs-small: 0.875rem;   /* 14px */
+  --fs-base: 1.0625rem;   /* 17px body */
+  --fs-md: 1.25rem;       /* 20px */
+  --fs-lg: 1.5rem;        /* 24px */
+  --fs-xl: 2.25rem;       /* 36px */
+  --fs-2xl: 3.25rem;      /* 52px */
+  --fs-3xl: clamp(2.75rem, 7vw, 5.5rem); /* hero display */
+
+  /* ---- Spacing (8px grid + golden steps) ---- */
+  --sp-1: 0.5rem;   --sp-2: 1rem;    --sp-3: 1.5rem;
+  --sp-4: 2rem;     --sp-5: 3rem;    --sp-6: 4rem;
+  --sp-7: 6rem;     --sp-8: 8rem;
+
+  --maxw: 1280px;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --font-display: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-body: var(--font-inter), 'Inter', system-ui, -apple-system, Arial, sans-serif;
+}
+
+/* ===== DARK THEME (default) — deep Nile night ===== */
+:root,
+[data-theme='dark'] {
+  --bg: #0e0c0a;             /* near-black warm obsidian */
+  --bg-elev: #161310;        /* elevated surface */
+  --bg-elev-2: #201b16;      /* cards */
+  --surface-glass: rgba(20, 17, 14, 0.72);
+  --ink: #f4ecdd;            /* warm papyrus-white text — 14.8:1 on --bg */
+  --ink-soft: #cdbfa6;       /* muted body — ~8:1 on --bg */
+  --ink-faint: #9a8f78;      /* labels/captions — ~4.7:1 on --bg */
+  --line: rgba(201, 162, 39, 0.18); /* hairline gold */
+  --line-strong: rgba(201, 162, 39, 0.4);
+  --accent: var(--gilt-bright);     /* gold reads bright on dark */
+  --accent-ink: #0e0c0a;            /* text ON gold buttons */
+  --hero-scrim: linear-gradient(180deg, rgba(8,7,6,0.35) 0%, rgba(8,7,6,0.2) 38%, rgba(8,7,6,0.85) 100%);
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.4);
+  color-scheme: dark;
+}
+
+/* ===== LIGHT THEME — sun-bleached papyrus & gilt ===== */
+[data-theme='light'] {
+  --bg: #f4ecda;             /* papyrus */
+  --bg-elev: #efe5cf;
+  --bg-elev-2: #fbf5e8;      /* cards */
+  --surface-glass: rgba(248, 241, 226, 0.78);
+  --ink: #2a2014;            /* dark ink — 12.6:1 on papyrus */
+  --ink-soft: #4d3f2a;       /* ~7.3:1 */
+  --ink-faint: #6b5a3e;      /* ~4.6:1 — passes AA */
+  --line: rgba(42, 32, 20, 0.14);
+  --line-strong: rgba(42, 32, 20, 0.32);
+  --accent: #79610f;         /* deepened gold — 5.06:1 on papyrus, passes AA body */
+  --accent-ink: #fbf5e8;     /* text ON gold buttons — 5.48:1 on accent, passes AA */
+  --hero-scrim: linear-gradient(180deg, rgba(20,14,6,0.2) 0%, rgba(20,14,6,0.12) 40%, rgba(20,14,6,0.7) 100%);
+  --shadow: 0 24px 60px rgba(74, 56, 24, 0.18);
+  --shadow-sm: 0 8px 24px rgba(74, 56, 24, 0.12);
+  color-scheme: light;
+}
+
+/* ============================ Base ============================ */
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.5s var(--ease), color 0.5s var(--ease);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.12;
+  font-weight: 600;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+a:hover { opacity: 0.82; }
+
+img { max-width: 100%; display: block; }
+
+::selection { background: var(--gilt); color: #0e0c0a; }
+
+/* Visible focus ring for a11y — never removed */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============================ Layout helpers ============================ */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-left: var(--sp-4);
+  padding-right: var(--sp-4);
+}
+@media (max-width: 640px) {
+  .container { padding-left: var(--sp-3); padding-right: var(--sp-3); }
+}
+
+.section { padding-block: var(--sp-7); }
+.section-tight { padding-block: var(--sp-6); }
+
+/* Eyebrow / kicker label */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-body);
+  font-size: var(--fs-tiny);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--sp-2);
+}
+.kicker::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--line-strong);
+}
+
+.lead {
+  font-size: var(--fs-md);
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+/* ============================ Buttons ============================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55em;
+  font-family: var(--font-body);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.95em 1.9em;
+  border-radius: 999px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.3s var(--ease), background 0.3s var(--ease),
+    color 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover { opacity: 1; box-shadow: var(--shadow); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+
+/* ============================ Reveal animation ============================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  will-change: opacity, transform;
+}
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ============================ Decorative: hieroglyph divider ============================ */
+.glyph-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  color: var(--accent);
+  font-size: var(--fs-lg);
+  opacity: 0.85;
+  margin: var(--sp-4) 0;
+  letter-spacing: 0.5em;
+  user-select: none;
+}
+.glyph-rule::before, .glyph-rule::after {
+  content: '';
+  height: 1px;
+  width: clamp(40px, 12vw, 130px);
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+}
+
+/* ============================ Utility ============================ */
+.text-center { text-align: center; }
+.mx-auto { margin-inline: auto; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.grid { display: grid; gap: var(--sp-4); }
+@media (min-width: 760px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 760px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 980px) { .grid-4 { grid-template-columns: repeat(4, 1fr); } }

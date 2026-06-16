@@ -1,0 +1,89 @@
+'use client';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import ThemeToggle from './ThemeToggle';
+import { BRAND } from '@/lib/copy';
+import styles from './Nav.module.css';
+
+const LINKS = [
+  { label: 'Journeys', href: '/journeys/' },
+  { label: 'Experiences', href: '/experiences/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Testimonials', href: '/testimonials/' },
+  { label: 'Social Impact', href: '/social-impact/' },
+];
+
+export default function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // close mobile menu on route change & lock body scroll while open
+  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
+  return (
+    <header className={`${styles.nav} ${scrolled ? styles.solid : ''}`}>
+      <div className={`container ${styles.inner}`}>
+        <Link href="/" className={styles.logo} aria-label={`${BRAND.name} home`}>
+          <span className={styles.ankh} aria-hidden="true">&#x2625;</span>
+          <span className={styles.logoText}>
+            Fabian&rsquo;s <em>Tours</em>
+          </span>
+        </Link>
+
+        <nav className={styles.desktop} aria-label="Primary">
+          {LINKS.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`${styles.link} ${pathname === l.href ? styles.active : ''}`}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className={styles.actions}>
+          <ThemeToggle />
+          <Link href="/apply/" className={`btn btn-primary ${styles.apply}`}>
+            Apply Now
+          </Link>
+          <button
+            className={styles.burger}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen((o) => !o)}
+          >
+            <span className={`${styles.burgerBar} ${open ? styles.b1 : ''}`} />
+            <span className={`${styles.burgerBar} ${open ? styles.b2 : ''}`} />
+            <span className={`${styles.burgerBar} ${open ? styles.b3 : ''}`} />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile drawer */}
+      <div className={`${styles.drawer} ${open ? styles.drawerOpen : ''}`} aria-hidden={!open}>
+        <nav className={styles.drawerNav} aria-label="Mobile">
+          <Link href="/" className={styles.drawerLink}>Home</Link>
+          {LINKS.map((l) => (
+            <Link key={l.href} href={l.href} className={styles.drawerLink}>{l.label}</Link>
+          ))}
+          <Link href="/apply/" className={`btn btn-primary ${styles.drawerApply}`}>Apply Now</Link>
+        </nav>
+        <div className={styles.glyphStrip} aria-hidden="true">&#x13080; &#x132AA; &#x13171; &#x13000;</div>
+      </div>
+    </header>
+  );
+}

@@ -1,0 +1,22 @@
+/* Shared content styles for inner pages (About, Impact, Experiences, Terms). */
+.section { padding-block: var(--sp-7); }
+.narrow { max-width: 760px; margin-inline: auto; }
+.h2 { font-size: var(--fs-xl); margin-bottom: var(--sp-2); }
+.p { color: var(--ink-soft); }
+
+/* Alternating golden-ratio split rows */
+.row {
+  display: grid; gap: var(--sp-5); align-items: center; margin-bottom: var(--sp-6);
+}
+@media (min-width: 900px) {
+  .row { grid-template-columns: 1fr 0.78fr; }
+  .rowReverse { grid-template-columns: 0.78fr 1fr; }
+  .rowReverse .media { order: -1; }
+}
+.media { position: relative; border-radius: var(--radius); overflow: hidden; }
+.media img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius); }
+.body { max-width: 54ch; }
+.body .h2 { max-width: 16ch; }
+
+.cardsGrid { display: grid; gap: var(--sp-4); }
+@media (min-width: 760px) { .cardsGrid3 { grid-template-columns: repeat(3, 1fr); } }
