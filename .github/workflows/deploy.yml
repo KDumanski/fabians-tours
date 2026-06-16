@@ -35,6 +35,8 @@ jobs:
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true # self-enable Pages so the first run can't race ahead of setup
 
       - name: Build (Next.js static export)
         # configure-pages sets steps.pages.outputs.base_path to /<repo>.
