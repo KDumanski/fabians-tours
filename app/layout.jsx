@@ -21,19 +21,19 @@ const playfair = Playfair_Display({
 export const metadata = {
   metadataBase: new URL('https://fabianstours.example'),
   title: {
-    default: "Fabian's Tours — Sacred Egypt Journeys",
-    template: "%s · Fabian's Tours",
+    default: 'Oceanic Ventures — Sacred Egypt Journeys',
+    template: '%s · Oceanic Ventures',
   },
   description:
     'Luxury sacred journeys through ancient Egypt — pyramids, the Nile, Luxor temples, and the Red Sea. Small groups, deep transformation, unforgettable wonder.',
   keywords: ['Egypt tours', 'luxury Egypt travel', 'Nile cruise', 'pyramids', 'Red Sea diving', 'Luxor', 'sacred Egypt journeys'],
   openGraph: {
-    title: "Fabian's Tours — Sacred Egypt Journeys",
+    title: 'Oceanic Ventures — Sacred Egypt Journeys',
     description: 'Answer the call of ancient Egypt. Luxury sacred journeys through desert, river, temple, and sea.',
     type: 'website',
     siteName: BRAND.name,
   },
-  twitter: { card: 'summary_large_image', title: "Fabian's Tours — Sacred Egypt Journeys" },
+  twitter: { card: 'summary_large_image', title: 'Oceanic Ventures — Sacred Egypt Journeys' },
   icons: { icon: '/favicon.svg' },
 };
 

@@ -10,7 +10,7 @@ export default function Footer() {
           <div className={styles.brandCol}>
             <Link href="/" className={styles.logo}>
               <span className={styles.ankh} aria-hidden="true">&#x2625;</span>
-              Fabian&rsquo;s <em>Tours</em>
+              Oceanic <em>Ventures</em>
             </Link>
             <p className={styles.tagline}>{BRAND.tagline}</p>
             <p className={styles.blurb}>

@@ -18,10 +18,10 @@ export default function Home() {
       {/* PILLARS */}
       <section id="pillars" className="section container">
         <SectionReveal className="text-center">
-          <p className="kicker mx-auto">The Four Gates</p>
-          <h2 className={styles.sectionTitle}>An invitation, in four movements</h2>
+          <p className="kicker mx-auto">The Practices</p>
+          <h2 className={styles.sectionTitle}>Four ways to journey inward</h2>
           <p className="lead mx-auto" style={{ textAlign: 'center' }}>
-            Every journey moves through the same ancient arc the Egyptians mapped onto the soul itself.
+            Freediving, somatics, shamanism, and sharing circles — woven together into one sacred passage.
           </p>
         </SectionReveal>
         <PillarGrid />

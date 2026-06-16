@@ -4,7 +4,7 @@ import prose from '../prose.module.css';
 
 export const metadata = {
   title: 'Terms & Conditions',
-  description: 'Booking terms, application process, payments, and cancellation policy for Fabian’s Tours.',
+  description: 'Booking terms, application process, payments, and cancellation policy for Oceanic Ventures.',
 };
 
 const SECTIONS = [

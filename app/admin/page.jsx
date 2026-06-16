@@ -100,7 +100,7 @@ export default function AdminPage() {
         <form className={styles.loginCard} onSubmit={login}>
           <span className={styles.ankh} aria-hidden="true">&#x2625;</span>
           <h1 className={styles.loginTitle}>Keeper&rsquo;s Gate</h1>
-          <p className={styles.loginSub}>Fabian&rsquo;s Tours — Admin Dashboard</p>
+          <p className={styles.loginSub}>Oceanic Ventures — Admin Dashboard</p>
           <label className={styles.field}>
             <span>Username</span>
             <input value={u} onChange={(e) => setU(e.target.value)} autoComplete="username" autoFocus />
@@ -126,7 +126,7 @@ export default function AdminPage() {
       <header className={styles.bar}>
         <div className={styles.brand}>
           <span className={styles.ankh} aria-hidden="true">&#x2625;</span>
-          <span>Fabian&rsquo;s Tours · <strong>Dashboard</strong></span>
+          <span>Oceanic Ventures · <strong>Dashboard</strong></span>
         </div>
         <div className={styles.barActions}>
           <button className="btn btn-ghost" onClick={resetDrafts}>Reset</button>

@@ -52,7 +52,7 @@
   --line-strong: rgba(201, 162, 39, 0.4);
   --accent: var(--gilt-bright);     /* gold reads bright on dark */
   --accent-ink: #0e0c0a;            /* text ON gold buttons */
-  --hero-scrim: linear-gradient(180deg, rgba(8,7,6,0.35) 0%, rgba(8,7,6,0.2) 38%, rgba(8,7,6,0.85) 100%);
+  --hero-scrim: linear-gradient(180deg, rgba(8,7,6,0.4) 0%, rgba(8,7,6,0.25) 35%, rgba(8,7,6,0.92) 100%);
   --shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
   --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.4);
   color-scheme: dark;
@@ -71,7 +71,7 @@
   --line-strong: rgba(42, 32, 20, 0.32);
   --accent: #79610f;         /* deepened gold — 5.06:1 on papyrus, passes AA body */
   --accent-ink: #fbf5e8;     /* text ON gold buttons — 5.48:1 on accent, passes AA */
-  --hero-scrim: linear-gradient(180deg, rgba(20,14,6,0.2) 0%, rgba(20,14,6,0.12) 40%, rgba(20,14,6,0.7) 100%);
+  --hero-scrim: linear-gradient(180deg, rgba(20,14,6,0.4) 0%, rgba(20,14,6,0.28) 38%, rgba(20,14,6,0.88) 100%);
   --shadow: 0 24px 60px rgba(74, 56, 24, 0.18);
   --shadow-sm: 0 8px 24px rgba(74, 56, 24, 0.12);
   color-scheme: light;

@@ -6,7 +6,7 @@
 }
 .heroBg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
 .heroScrim { position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(180deg, rgba(8,7,6,0.4) 0%, rgba(8,7,6,0.25) 35%, rgba(8,7,6,0.9) 100%); }
+  background: linear-gradient(180deg, rgba(8,7,6,0.45) 0%, rgba(8,7,6,0.3) 32%, rgba(8,7,6,0.95) 100%); }
 .heroInner { padding-block: var(--sp-5) var(--sp-5); }
 .back { color: #f0e9da; font-size: var(--fs-small); letter-spacing: 0.04em; display: inline-block; margin-bottom: var(--sp-3); }
 .back:hover { color: #e6c453; opacity: 1; }
@@ -20,8 +20,8 @@
 
 .facts { display: flex; flex-wrap: wrap; gap: var(--sp-4); margin-top: var(--sp-2); }
 .fact { display: flex; flex-direction: column; }
-.factLabel { color: #cdbfa6; font-size: var(--fs-tiny); text-transform: uppercase; letter-spacing: 0.14em; }
-.factValue { color: #fff; font-weight: 600; font-size: var(--fs-base); }
+.factLabel { color: #e7dcc6; font-size: var(--fs-tiny); text-transform: uppercase; letter-spacing: 0.14em; text-shadow: 0 1px 6px rgba(0,0,0,0.85); }
+.factValue { color: #fff; font-weight: 700; font-size: var(--fs-base); text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
 
 /* Layout */
 .layout { display: grid; gap: var(--sp-5); }

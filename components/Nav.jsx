@@ -39,7 +39,7 @@ export default function Nav() {
         <Link href="/" className={styles.logo} aria-label={`${BRAND.name} home`}>
           <span className={styles.ankh} aria-hidden="true">&#x2625;</span>
           <span className={styles.logoText}>
-            Fabian&rsquo;s <em>Tours</em>
+            Oceanic <em>Ventures</em>
           </span>
         </Link>
 

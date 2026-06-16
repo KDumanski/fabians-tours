@@ -7,7 +7,7 @@ import styles from './experiences.module.css';
 
 export const metadata = {
   title: 'Signature Experiences',
-  description: 'The hallmark moments woven into every Fabian’s Tours journey — dawn at Giza, the Nile under stars, ritual in the temples, the Red Sea reefs.',
+  description: 'The hallmark moments woven into every Oceanic Ventures journey — dawn at Giza, the Nile under stars, ritual in the temples, the Red Sea reefs.',
 };
 
 const EXPERIENCES = [
