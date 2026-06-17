@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ThemeToggle from './ThemeToggle';
+import { GlyphRule } from './Glyph';
 import { BRAND } from '@/lib/copy';
 import styles from './Nav.module.css';
 
@@ -82,7 +83,7 @@ export default function Nav() {
           ))}
           <Link href="/apply/" className={`btn btn-primary ${styles.drawerApply}`}>Apply Now</Link>
         </nav>
-        <div className={styles.glyphStrip} aria-hidden="true">&#x13080; &#x132AA; &#x13171; &#x13000;</div>
+        <GlyphRule className={styles.glyphStrip} names={['eye', 'lotus', 'feather', 'sun']} />
       </div>
     </header>
   );

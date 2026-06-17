@@ -19,7 +19,7 @@ const SECTIONS = [
 export default function TermsPage() {
   return (
     <>
-      <PageHero kicker="The Fine Print" title="Terms & Conditions" image={IMG.egyptDesert} glyph="&#x13080;" />
+      <PageHero kicker="The Fine Print" title="Terms & Conditions" image={IMG.egyptDesert} glyph="eye" />
       <section className={`${prose.section} container`}>
         <div className={prose.narrow}>
           {SECTIONS.map((s, i) => (

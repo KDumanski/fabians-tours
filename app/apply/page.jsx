@@ -1,5 +1,6 @@
 import PageHero from '@/components/PageHero';
 import ApplyForm from '@/components/ApplyForm';
+import { GlyphRule } from '@/components/Glyph';
 import { BRAND } from '@/lib/copy';
 import { IMG } from '@/lib/images';
 import styles from './apply.module.css';
@@ -18,7 +19,7 @@ export default function ApplyPage() {
         title="Answer the call"
         sub="Places are limited and granted by application. Tell us what’s drawing you to Egypt — we reply to every enquiry personally."
         image={IMG.pyramidDusk}
-        glyph="&#x2625;"
+        glyph="ankh"
       />
       <section className="section container">
         <div className={styles.layout}>
@@ -36,7 +37,7 @@ export default function ApplyPage() {
             <a href={`mailto:${BRAND.email}`} className="btn btn-ghost" style={{ width: '100%', marginTop: '0.6rem' }}>
               Email Us
             </a>
-            <div className="glyph-rule" aria-hidden="true" style={{ margin: 'var(--sp-4) 0' }}>&#x132AA; &#x13171;</div>
+            <GlyphRule className="glyph-rule" names={['lotus', 'feather']} />
             <ul className={styles.assure}>
               <li>Small groups, never crowds</li>
               <li>Private guiding & curated stays</li>

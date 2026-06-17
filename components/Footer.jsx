@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { GlyphRule } from './Glyph';
 import { BRAND, FOOTER_LINKS } from '@/lib/copy';
 import styles from './Footer.module.css';
 
@@ -45,9 +46,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className={styles.glyphRule} aria-hidden="true">
-          &#x13080; &#x132AA; &#x13171; &#x13000; &#x1308B;
-        </div>
+        <GlyphRule className={styles.glyphRule} names={['eye', 'lotus', 'feather', 'sun', 'ankh']} />
 
         <div className={styles.bottom}>
           <span>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import SectionReveal from '@/components/SectionReveal';
+import { GlyphRule } from '@/components/Glyph';
 import { ABOUT } from '@/lib/copy';
 import { IMG } from '@/lib/images';
 import prose from '../prose.module.css';
@@ -18,7 +19,7 @@ export default function AboutPage() {
         title={ABOUT.intro.title}
         sub="As above, so below. To stand before the pyramids is to stand before yourself."
         image={IMG.starsDesert}
-        glyph="&#x2625;"
+        glyph="ankh"
       />
 
       <section className={`${prose.section} container`}>
@@ -26,7 +27,7 @@ export default function AboutPage() {
           {ABOUT.intro.body.map((p, i) => <p key={i} className={prose.p}>{p}</p>)}
         </SectionReveal>
 
-        <div className="glyph-rule" aria-hidden="true">&#x13080; &#x132AA; &#x13171;</div>
+        <GlyphRule className="glyph-rule" names={['eye', 'lotus', 'feather']} />
 
         {/* Atlantis */}
         <SectionReveal className={prose.row}>

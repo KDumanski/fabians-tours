@@ -17,7 +17,7 @@ export default function TestimonialsPage() {
         title="Voices from the journey"
         sub="The desert leaves a mark. Here is what travelers carried home."
         image={IMG.abuSimbel}
-        glyph="&#x13171;"
+        glyph="feather"
       />
       <section className="section container">
         <div className={styles.masonry}>

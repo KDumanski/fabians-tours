@@ -96,7 +96,8 @@
 .drawerLink:hover { color: var(--accent); opacity: 1; }
 .drawerApply { margin-top: var(--sp-3); align-self: flex-start; }
 .glyphStrip {
-  color: var(--accent); opacity: 0.4; font-size: 2rem; letter-spacing: 0.4em;
+  color: var(--accent); opacity: 0.4; font-size: 1.4rem;
+  display: flex; justify-content: center;
   text-align: center; padding-bottom: var(--sp-2);
 }
 

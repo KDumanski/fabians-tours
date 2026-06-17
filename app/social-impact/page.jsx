@@ -2,6 +2,7 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import SectionReveal from '@/components/SectionReveal';
 import ImpactCards from '@/components/ImpactCards';
+import { GlyphRule } from '@/components/Glyph';
 import { IMPACT } from '@/lib/copy';
 import { IMG } from '@/lib/images';
 import prose from '../prose.module.css';
@@ -19,7 +20,7 @@ export default function SocialImpactPage() {
         title={IMPACT.title}
         sub="Reverence asks for more than admiration. It asks for action."
         image={IMG.redSea}
-        glyph="&#x1308B;"
+        glyph="lotus"
       />
       <section className={`${prose.section} container`}>
         <SectionReveal className={prose.narrow}>
@@ -29,7 +30,7 @@ export default function SocialImpactPage() {
         <ImpactCards />
 
         <SectionReveal className="text-center" style={{ marginTop: 'var(--sp-6)' }}>
-          <div className="glyph-rule" aria-hidden="true">&#x132AA; &#x13193; &#x132F9;</div>
+          <GlyphRule className="glyph-rule" names={['lotus', 'water', 'feather']} />
           <h2 className={prose.h2} style={{ marginInline: 'auto' }}>Travel that gives back</h2>
           <p className="lead mx-auto" style={{ textAlign: 'center' }}>
             Every journey you take helps protect the river, the reef, and the communities who call them home.

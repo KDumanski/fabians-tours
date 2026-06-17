@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Glyph from './Glyph';
 import { HERO } from '@/lib/copy';
 import { IMG } from '@/lib/images';
 import styles from './Hero.module.css';
@@ -10,7 +11,7 @@ export default function Hero() {
       <div className={styles.scrim} aria-hidden="true" />
       <div className={`container ${styles.inner}`}>
         <p className={styles.kicker}>
-          <span className={styles.glyph} aria-hidden="true">&#x13080;</span>
+          <Glyph name="eye" className={styles.glyph} />
           {HERO.kicker}
         </p>
         <h1 className={styles.title}>{HERO.title}</h1>

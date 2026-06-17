@@ -17,7 +17,7 @@ export default function JourneysPage() {
         title="Choose your passage to ancient Egypt"
         sub="Each journey is small, intentional, and unrepeatable. Find the one that is calling you."
         image={IMG.karnak}
-        glyph="&#x132AA;"
+        glyph="lotus"
       />
       <section className="section container">
         <div className="grid grid-3">

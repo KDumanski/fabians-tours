@@ -5,6 +5,7 @@ import SectionReveal from '@/components/SectionReveal';
 import PillarGrid from '@/components/PillarGrid';
 import ImpactCards from '@/components/ImpactCards';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
+import { GlyphRule } from '@/components/Glyph';
 import { TOURS } from '@/lib/tours';
 import { ABOUT, IMPACT } from '@/lib/copy';
 import { IMG } from '@/lib/images';
@@ -98,7 +99,7 @@ export default function Home() {
         <img src={IMG.starsDesert} alt="" aria-hidden="true" className={styles.ctaBg} loading="lazy" />
         <div className={styles.ctaScrim} aria-hidden="true" />
         <SectionReveal className={`container ${styles.ctaInner}`}>
-          <div className="glyph-rule" aria-hidden="true">&#x13080; &#x132AA; &#x13171;</div>
+          <GlyphRule className="glyph-rule" names={['eye', 'lotus', 'feather']} />
           <h2 className={styles.ctaTitle}>The desert is calling. Will you answer?</h2>
           <p className={styles.ctaSub}>
             Places are limited and granted by application. Begin your passage to ancient Egypt.

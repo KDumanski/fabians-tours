@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import SectionReveal from '@/components/SectionReveal';
+import Glyph from '@/components/Glyph';
 import { IMG, GALLERY } from '@/lib/images';
 import prose from '../prose.module.css';
 import styles from './experiences.module.css';
@@ -11,12 +12,12 @@ export const metadata = {
 };
 
 const EXPERIENCES = [
-  { glyph: '\u{2609}', title: 'Dawn at the Giza Plateau', text: 'Private entry before the gates open to the world. Just you, the pyramids, and the first gold of morning on five-thousand-year-old stone.', img: IMG.gizaPyramids },
-  { glyph: '\u{2625}', title: 'A Night Sailing the Nile', text: 'Felucca under a sky thick with stars, the river doing what it has always done — carrying travelers gently toward something new.', img: IMG.nileFelucca },
-  { glyph: '\u{13080}', title: 'Ritual in the Temple Sanctuary', text: 'Candlelight, hieroglyph, and silence in a working temple. The walls have kept these secrets for millennia. Tonight they keep yours.', img: IMG.karnak },
-  { glyph: '\u{1F30A}', title: 'The Red Sea at Golden Hour', text: 'Warm water, living coral, and the most charismatic locals in the sea. Float, breathe, and let the blue do its quiet work.', img: IMG.redSea },
-  { glyph: '\u{13193}', title: 'Reading the Walls', text: 'Egyptology brought to life on-site — the myths of Osiris, Isis, and Ra decoded where they were carved, until the stone starts speaking.', img: IMG.hieroglyphs },
-  { glyph: '\u{132AA}', title: 'The Closing Circle', text: 'Beneath the desert moon, the group gathers one last time. You arrived a traveler. You leave part of a circle that spans the world.', img: IMG.starsDesert },
+  { glyph: 'sun', title: 'Dawn at the Giza Plateau', text: 'Private entry before the gates open to the world. Just you, the pyramids, and the first gold of morning on five-thousand-year-old stone.', img: IMG.gizaPyramids },
+  { glyph: 'ankh', title: 'A Night Sailing the Nile', text: 'Felucca under a sky thick with stars, the river doing what it has always done — carrying travelers gently toward something new.', img: IMG.nileFelucca },
+  { glyph: 'eye', title: 'Ritual in the Temple Sanctuary', text: 'Candlelight, hieroglyph, and silence in a working temple. The walls have kept these secrets for millennia. Tonight they keep yours.', img: IMG.karnak },
+  { glyph: 'water', title: 'The Red Sea at Golden Hour', text: 'Warm water, living coral, and the most charismatic locals in the sea. Float, breathe, and let the blue do its quiet work.', img: IMG.redSea },
+  { glyph: 'pyramid', title: 'Reading the Walls', text: 'Egyptology brought to life on-site — the myths of Osiris, Isis, and Ra decoded where they were carved, until the stone starts speaking.', img: IMG.hieroglyphs },
+  { glyph: 'circle', title: 'The Closing Circle', text: 'Beneath the desert moon, the group gathers one last time. You arrived a traveler. You leave part of a circle that spans the world.', img: IMG.starsDesert },
 ];
 
 export default function ExperiencesPage() {
@@ -27,7 +28,7 @@ export default function ExperiencesPage() {
         title="The moments that make a journey unforgettable"
         sub="Woven into every passage — the hallmark experiences that turn a trip into a turning point."
         image={IMG.luxorTemple || IMG.karnak}
-        glyph="&#x13171;"
+        glyph="pyramid"
       />
 
       <section className={`${prose.section} container`}>
@@ -36,7 +37,7 @@ export default function ExperiencesPage() {
             <SectionReveal key={i} delay={(i % 2) * 100} className={styles.exp}>
               <div className={styles.expMedia}>
                 <img src={e.img} alt={e.title} loading="lazy" />
-                <span className={styles.expGlyph} aria-hidden="true">{e.glyph}</span>
+                <Glyph name={e.glyph} className={styles.expGlyph} />
               </div>
               <div className={styles.expBody}>
                 <h2 className={styles.expTitle}>{e.title}</h2>
