@@ -25,10 +25,14 @@ export default function TestimonialsPage() {
             <SectionReveal key={i} delay={(i % 3) * 80} className={styles.card}>
               <span className={styles.mark} aria-hidden="true">&ldquo;</span>
               <blockquote className={styles.quote}>{t.quote}</blockquote>
-              <div className={styles.cap}>
-                <span className={styles.name}>{t.name}</span>
-                <span className={styles.from}>{t.from} &middot; {t.journey}</span>
-              </div>
+              <figcaption className={styles.cap}>
+                <span className={styles.avatar} aria-hidden="true">{t.name.charAt(0)}</span>
+                <span className={styles.who}>
+                  <span className={styles.name}>{t.name}</span>
+                  <span className={styles.from}>{t.from}</span>
+                </span>
+                <span className={styles.journeyTag}>{t.journey}</span>
+              </figcaption>
             </SectionReveal>
           ))}
         </div>

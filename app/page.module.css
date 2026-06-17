@@ -2,8 +2,10 @@
   font-size: var(--fs-2xl);
   max-width: 18ch;
   margin-bottom: var(--sp-2);
+  margin-inline: auto; /* center the capped-width heading in centered sections */
 }
-.head .sectionTitle, .text-center .sectionTitle { margin-inline: 0; }
+/* In left-aligned layouts (journeys header, about split), keep title flush-left */
+.head .sectionTitle, .splitBody .sectionTitle { margin-inline: 0; }
 
 .head {
   display: flex;

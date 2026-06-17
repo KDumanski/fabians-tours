@@ -19,8 +19,11 @@ export default function TestimonialCarousel() {
         <span className={styles.quoteMark} aria-hidden="true">&ldquo;</span>
         <blockquote className={styles.quote}>{t.quote}</blockquote>
         <figcaption className={styles.cap}>
-          <span className={styles.name}>{t.name}</span>
-          <span className={styles.from}>{t.from} &middot; {t.journey}</span>
+          <span className={styles.avatar} aria-hidden="true">{t.name.charAt(0)}</span>
+          <span className={styles.who}>
+            <span className={styles.name}>{t.name}</span>
+            <span className={styles.from}>{t.from} &middot; {t.journey}</span>
+          </span>
         </figcaption>
       </figure>
 
