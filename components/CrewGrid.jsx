@@ -1,5 +1,6 @@
 import SectionReveal from './SectionReveal';
 import { CREW } from '@/lib/crew';
+import { asset } from '@/lib/asset';
 import styles from './CrewGrid.module.css';
 
 // The real crew. Fabian (the founder) gets a wider feature card with his note;
@@ -15,7 +16,7 @@ export default function CrewGrid({ limit }) {
           className={`${styles.card} ${m.lead ? styles.lead : ''}`}
         >
           <div className={styles.media}>
-            <img src={m.photo} alt={m.name} className={styles.photo} loading="lazy" />
+            <img src={asset(m.photo)} alt={m.name} className={styles.photo} loading="lazy" />
           </div>
           <div className={styles.body}>
             <h3 className={styles.name}>{m.name}</h3>
