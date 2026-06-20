@@ -3,6 +3,7 @@ import './globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
+import NewsletterPopup from '@/components/NewsletterPopup';
 import ThemeScript from '@/components/ThemeScript';
 import { BRAND } from '@/lib/copy';
 
@@ -21,19 +22,19 @@ const playfair = Playfair_Display({
 export const metadata = {
   metadataBase: new URL('https://fabianstours.example'),
   title: {
-    default: 'Oceanic Ventures — Sacred Egypt Journeys',
+    default: 'Oceanic Ventures — Transformational Water Retreats',
     template: '%s · Oceanic Ventures',
   },
   description:
-    'Luxury sacred journeys through ancient Egypt — pyramids, the Nile, Luxor temples, and the Red Sea. Small groups, deep transformation, unforgettable wonder.',
-  keywords: ['Egypt tours', 'luxury Egypt travel', 'Nile cruise', 'pyramids', 'Red Sea diving', 'Luxor', 'sacred Egypt journeys'],
+    'The Atlantis Call — transformational retreats rooted in the wisdom of water. Freediving, somatics, ritual, and sacred Egypt journeys, held by a small devoted crew.',
+  keywords: ['transformational retreats', 'water retreats', 'freediving retreat', 'somatic water therapy', 'Egypt sacred journeys', 'Red Sea retreat', 'dolphin retreat'],
   openGraph: {
-    title: 'Oceanic Ventures — Sacred Egypt Journeys',
-    description: 'Answer the call of ancient Egypt. Luxury sacred journeys through desert, river, temple, and sea.',
+    title: 'Oceanic Ventures — Transformational Water Retreats',
+    description: 'Answer the Atlantis Call. Transformational retreats through sea, river, temple, and desert.',
     type: 'website',
     siteName: BRAND.name,
   },
-  twitter: { card: 'summary_large_image', title: 'Oceanic Ventures — Sacred Egypt Journeys' },
+  twitter: { card: 'summary_large_image', title: 'Oceanic Ventures — Transformational Water Retreats' },
   icons: { icon: '/favicon.svg' },
 };
 
@@ -56,6 +57,7 @@ export default function RootLayout({ children }) {
         <main id="main">{children}</main>
         <Footer />
         <WhatsAppFloat />
+        <NewsletterPopup />
       </body>
     </html>
   );

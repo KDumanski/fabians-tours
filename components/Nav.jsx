@@ -5,12 +5,14 @@ import { usePathname } from 'next/navigation';
 import ThemeToggle from './ThemeToggle';
 import { GlyphRule } from './Glyph';
 import { BRAND } from '@/lib/copy';
+import { asset } from '@/lib/asset';
 import styles from './Nav.module.css';
 
 const LINKS = [
-  { label: 'Journeys', href: '/journeys/' },
+  { label: 'Retreats', href: '/journeys/' },
   { label: 'Experiences', href: '/experiences/' },
   { label: 'About', href: '/about/' },
+  { label: 'Our Crew', href: '/crew/' },
   { label: 'Testimonials', href: '/testimonials/' },
   { label: 'Social Impact', href: '/social-impact/' },
 ];
@@ -38,7 +40,7 @@ export default function Nav() {
     <header className={`${styles.nav} ${scrolled ? styles.solid : ''}`}>
       <div className={`container ${styles.inner}`}>
         <Link href="/" className={styles.logo} aria-label={`${BRAND.name} home`}>
-          <span className={styles.ankh} aria-hidden="true">&#x2625;</span>
+          <img src={asset(BRAND.logo)} alt="" aria-hidden="true" className={styles.logoMark} />
           <span className={styles.logoText}>
             Oceanic <em>Ventures</em>
           </span>

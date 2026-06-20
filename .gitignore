@@ -24,6 +24,11 @@ yarn-error.log*
 .env*.local
 .env
 
+# secrets / OAuth tokens — never commit
+*_token.json
+gmail_send_token.json
+.secrets/
+
 # vercel
 .vercel
 
