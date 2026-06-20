@@ -5,45 +5,49 @@ import SectionReveal from '@/components/SectionReveal';
 import PillarGrid from '@/components/PillarGrid';
 import ImpactCards from '@/components/ImpactCards';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
+import VideoTestimonials from '@/components/VideoTestimonials';
+import CrewGrid from '@/components/CrewGrid';
 import { GlyphRule } from '@/components/Glyph';
-import { TOURS } from '@/lib/tours';
+import { RETREATS } from '@/lib/tours';
 import { ABOUT, IMPACT } from '@/lib/copy';
 import { IMG } from '@/lib/images';
 import styles from './page.module.css';
+
+const FEATURED = RETREATS();
 
 export default function Home() {
   return (
     <>
       <Hero />
 
-      {/* PILLARS */}
+      {/* PILLARS — the real practices (no made-up category labels) */}
       <section id="pillars" className="section container">
         <SectionReveal className="text-center">
           <p className="kicker mx-auto">The Practices</p>
-          <h2 className={styles.sectionTitle}>Four ways to journey inward</h2>
+          <h2 className={styles.sectionTitle}>How we journey inward</h2>
           <p className="lead mx-auto" style={{ textAlign: 'center' }}>
-            Freediving, somatics, shamanism, and sharing circles — woven together into one sacred passage.
+            Freediving, somatics, shamanism, and sharing circles — woven together into one held passage.
           </p>
         </SectionReveal>
         <PillarGrid />
       </section>
 
-      {/* FEATURED JOURNEYS */}
+      {/* FEATURED RETREATS */}
       <section className="section" style={{ background: 'var(--bg-elev)' }}>
         <div className="container">
           <SectionReveal className={styles.head}>
             <div>
-              <p className="kicker">The Journeys</p>
+              <p className="kicker">The Retreats</p>
               <h2 className={styles.sectionTitle}>Choose your passage</h2>
             </div>
-            <Link href="/journeys/" className="btn btn-ghost">View All Journeys</Link>
+            <Link href="/journeys/" className="btn btn-ghost">Explore the Retreats</Link>
           </SectionReveal>
 
           <div className={`grid grid-2 ${styles.journeyGrid}`}>
             <SectionReveal as="div" style={{ gridColumn: '1 / -1' }}>
-              <JourneyCard tour={TOURS[0]} featured />
+              <JourneyCard tour={FEATURED[0]} featured />
             </SectionReveal>
-            {TOURS.slice(1).map((t, i) => (
+            {FEATURED.slice(1).map((t, i) => (
               <SectionReveal key={t.slug} delay={i * 90}>
                 <JourneyCard tour={t} />
               </SectionReveal>
@@ -85,7 +89,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* CREW TEASER */}
+      <section className="section container">
+        <SectionReveal className={styles.head}>
+          <div>
+            <p className="kicker">The Crew</p>
+            <h2 className={styles.sectionTitle}>The hands that hold the journey</h2>
+          </div>
+          <Link href="/crew/" className="btn btn-ghost">Meet the Crew</Link>
+        </SectionReveal>
+        <CrewGrid limit={4} />
+      </section>
+
+      {/* VIDEO TESTIMONIALS — Fabian's own, he asked us to feature these */}
+      <section className="section" style={{ background: 'var(--bg-elev)' }}>
+        <div className="container">
+          <SectionReveal className="text-center">
+            <p className="kicker mx-auto">In Their Own Words</p>
+            <h2 className={styles.sectionTitle}>Hear it from the circle</h2>
+            <p className="lead mx-auto" style={{ textAlign: 'center' }}>
+              Short reflections, filmed on the journey.
+            </p>
+          </SectionReveal>
+          <VideoTestimonials />
+        </div>
+      </section>
+
+      {/* WRITTEN TESTIMONIALS */}
       <section className="section container">
         <SectionReveal className="text-center">
           <p className="kicker mx-auto">From the Circle</p>
@@ -100,9 +130,9 @@ export default function Home() {
         <div className={styles.ctaScrim} aria-hidden="true" />
         <SectionReveal className={`container ${styles.ctaInner}`}>
           <GlyphRule className="glyph-rule" names={['eye', 'lotus', 'feather']} />
-          <h2 className={styles.ctaTitle}>The desert is calling. Will you answer?</h2>
+          <h2 className={styles.ctaTitle}>The water is calling. Will you answer?</h2>
           <p className={styles.ctaSub}>
-            Places are limited and granted by application. Begin your passage to ancient Egypt.
+            Places are limited and granted by application. Begin your passage with us.
           </p>
           <Link href="/apply/" className="btn btn-primary">Apply Now</Link>
         </SectionReveal>

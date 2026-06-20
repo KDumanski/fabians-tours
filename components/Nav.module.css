@@ -35,6 +35,7 @@
 }
 .logo:hover { opacity: 1; }
 .ankh { color: var(--accent); font-size: 1.5rem; line-height: 1; }
+.logoMark { height: 38px; width: auto; display: block; }
 .logoText em { color: var(--accent); font-style: italic; }
 
 /* Desktop nav */

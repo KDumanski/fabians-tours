@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { GlyphRule } from './Glyph';
 import { BRAND, FOOTER_LINKS } from '@/lib/copy';
+import { asset } from '@/lib/asset';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -10,13 +11,13 @@ export default function Footer() {
         <div className={styles.top}>
           <div className={styles.brandCol}>
             <Link href="/" className={styles.logo}>
-              <span className={styles.ankh} aria-hidden="true">&#x2625;</span>
+              <img src={asset(BRAND.logo)} alt="" aria-hidden="true" className={styles.logoMark} />
               Oceanic <em>Ventures</em>
             </Link>
             <p className={styles.tagline}>{BRAND.tagline}</p>
             <p className={styles.blurb}>
-              Luxury sacred journeys through the land of the pharaohs — desert, river,
-              temple, and sea. Come for the wonder. Leave changed.
+              Transformational retreats rooted in the wisdom of water — sea, river,
+              temple, and desert. Come for the wonder. Leave changed.
             </p>
             <div className={styles.socials} aria-label="Social links">
               <a href={BRAND.instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>

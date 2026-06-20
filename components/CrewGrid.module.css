@@ -1,0 +1,92 @@
+.grid {
+  margin-top: var(--sp-5);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-3);
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-elev-2);
+  transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+.card:hover { transform: translateY(-6px); border-color: var(--line-strong); box-shadow: var(--shadow-sm); }
+
+/* Founder card spans two columns and runs photo beside the bio. */
+.lead { grid-column: span 2; }
+.lead .media { aspect-ratio: auto; }
+
+.media {
+  position: relative;
+  aspect-ratio: 27 / 37; /* matches the source 270x370 portraits */
+  overflow: hidden;
+  background: var(--bg-elev);
+}
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease);
+}
+.card:hover .photo { transform: scale(1.04); }
+
+.body { padding: var(--sp-3); }
+.name {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  margin: 0 0 0.35em;
+  color: var(--ink);
+}
+.role {
+  margin: 0;
+  color: var(--accent);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  font-weight: 600;
+}
+.note {
+  margin: var(--sp-2) 0 0;
+  color: var(--ink-soft);
+  font-size: var(--fs-small);
+  line-height: 1.65;
+}
+
+/* Founder: photo left, text right on wider screens. */
+@media (min-width: 721px) {
+  .lead {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .lead .media {
+    flex: 0 0 42%;
+    aspect-ratio: auto;
+  }
+  .lead .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 980px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+  .lead { grid-column: span 2; }
+}
+@media (max-width: 720px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .lead { grid-column: span 2; }
+}
+@media (max-width: 460px) {
+  .grid { grid-template-columns: 1fr; }
+  .lead { grid-column: span 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .photo, .card:hover .photo, .card:hover { transition: none; transform: none; }
+}

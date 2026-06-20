@@ -21,6 +21,7 @@
 .logo em { color: var(--accent); font-style: italic; }
 .logo:hover { opacity: 1; }
 .ankh { color: var(--accent); }
+.logoMark { height: 42px; width: auto; display: block; }
 
 .tagline {
   color: var(--accent);
