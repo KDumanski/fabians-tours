@@ -6,6 +6,7 @@ import WhatsAppFloat from '@/components/WhatsAppFloat';
 import NewsletterPopup from '@/components/NewsletterPopup';
 import ThemeScript from '@/components/ThemeScript';
 import { BRAND } from '@/lib/copy';
+import { asset } from '@/lib/asset';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,7 +21,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://fabianstours.example'),
+  metadataBase: new URL('https://kdumanski.github.io/fabians-tours/'),
   title: {
     default: 'Oceanic Ventures — Transformational Water Retreats',
     template: '%s · Oceanic Ventures',
@@ -35,7 +36,7 @@ export const metadata = {
     siteName: BRAND.name,
   },
   twitter: { card: 'summary_large_image', title: 'Oceanic Ventures — Transformational Water Retreats' },
-  icons: { icon: '/favicon.svg' },
+  icons: { icon: asset('/favicon.svg') },
 };
 
 export const viewport = {
