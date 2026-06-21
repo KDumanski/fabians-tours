@@ -19,6 +19,12 @@
 /* Founder card spans two columns and runs photo beside the bio. */
 .lead { grid-column: span 2; }
 .lead .media { aspect-ratio: auto; }
+/* A faint gold wash on the founder's text side so the bio reads as a designed
+   panel rather than empty space next to the photo. */
+.lead .body {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 7%, transparent), transparent 60%);
+}
 
 .media {
   position: relative;
@@ -36,6 +42,15 @@
 .card:hover .photo { transform: scale(1.04); }
 
 .body { padding: var(--sp-3); }
+.leadKicker {
+  display: none; /* shown only on the wide founder layout below */
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: var(--fs-tiny);
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.8em;
+}
 .name {
   font-family: var(--font-display);
   font-size: var(--fs-md);
@@ -63,15 +78,23 @@
     align-items: stretch;
   }
   .lead .media {
-    flex: 0 0 42%;
+    flex: 0 0 48%;
     aspect-ratio: auto;
+    min-height: 460px; /* fill the card height beside the bio — no short photo */
   }
   .lead .body {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: var(--sp-4) var(--sp-4);
+    gap: 0.2em;
   }
+  /* Founder gets a larger name + roomier bio to fill the wider panel. */
+  .lead .leadKicker { display: block; }
+  .lead .name { font-size: clamp(1.6rem, 2.4vw, 2.1rem); margin-bottom: 0.5em; }
+  .lead .role { font-size: var(--fs-base); }
+  .lead .note { font-size: var(--fs-base); margin-top: var(--sp-3); max-width: 42ch; }
 }
 
 @media (max-width: 980px) {

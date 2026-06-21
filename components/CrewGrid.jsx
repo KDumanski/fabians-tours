@@ -12,13 +12,14 @@ export default function CrewGrid({ limit }) {
       {people.map((m, i) => (
         <SectionReveal
           key={m.name}
-          delay={(i % 4) * 80}
+          delay={Math.min(i, 3) * 50}
           className={`${styles.card} ${m.lead ? styles.lead : ''}`}
         >
           <div className={styles.media}>
             <img src={asset(m.photo)} alt={m.name} className={styles.photo} loading="lazy" />
           </div>
           <div className={styles.body}>
+            {m.lead ? <span className={styles.leadKicker}>The Founder</span> : null}
             <h3 className={styles.name}>{m.name}</h3>
             <p className={styles.role}>{m.role}</p>
             {m.note ? <p className={styles.note}>{m.note}</p> : null}
