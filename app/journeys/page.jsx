@@ -1,19 +1,19 @@
 import PageHero from '@/components/PageHero';
 import JourneyCard from '@/components/JourneyCard';
 import SectionReveal from '@/components/SectionReveal';
-import { RETREATS, TRAININGS } from '@/lib/tours';
+import { getRetreats, getTrainings } from '@/lib/data';
 import { IMG } from '@/lib/images';
 import prose from '../prose.module.css';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'The Retreats',
   description: 'Browse all Oceanic Ventures retreats — Red Sea dolphins, temple pilgrimages, Nile sailing, the complete Egypt initiation, and our somatic water therapy training.',
 };
 
-const retreats = RETREATS();
-const trainings = TRAININGS();
-
-export default function JourneysPage() {
+export default async function JourneysPage() {
+  const [retreats, trainings] = await Promise.all([getRetreats(), getTrainings()]);
   return (
     <>
       <PageHero

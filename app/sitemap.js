@@ -1,17 +1,25 @@
-import { tourSlugs } from '@/lib/tours';
+import { getTourSlugs } from '@/lib/data';
 
-const BASE = 'https://fabianstours.example';
+const BASE = process.env.SITE_URL || 'https://fabians-tours.vercel.app';
 
-export const dynamic = 'force-static';
+// Reads tour slugs from the DB, so render on demand rather than at build.
+export const dynamic = 'force-dynamic';
 
-export default function sitemap() {
-  const routes = ['', '/journeys', '/experiences', '/about', '/testimonials', '/social-impact', '/apply', '/terms'];
+export default async function sitemap() {
+  const routes = ['', '/journeys', '/experiences', '/about', '/crew', '/testimonials', '/social-impact', '/apply', '/terms'];
   const staticPages = routes.map((r) => ({
     url: `${BASE}${r}/`,
     changeFrequency: 'monthly',
     priority: r === '' ? 1 : 0.7,
   }));
-  const tourPages = tourSlugs().map((slug) => ({
+
+  let slugs = [];
+  try {
+    slugs = await getTourSlugs();
+  } catch {
+    slugs = []; // DB unavailable at build — sitemap still emits static routes
+  }
+  const tourPages = slugs.map((slug) => ({
     url: `${BASE}/journeys/${slug}/`,
     changeFrequency: 'monthly',
     priority: 0.8,

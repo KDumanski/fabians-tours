@@ -21,7 +21,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://kdumanski.github.io/fabians-tours/'),
+  metadataBase: new URL(process.env.SITE_URL || 'https://fabians-tours.vercel.app'),
   title: {
     default: 'Oceanic Ventures — Transformational Water Retreats',
     template: '%s · Oceanic Ventures',

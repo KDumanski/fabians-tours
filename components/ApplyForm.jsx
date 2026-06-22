@@ -1,12 +1,12 @@
 'use client';
 import { useState } from 'react';
-import { TOURS } from '@/lib/tours';
 import styles from './ApplyForm.module.css';
 
 // Formspree endpoint — swap PLACEHOLDER for your real form id (see README).
 const FORMSPREE = 'https://formspree.io/f/PLACEHOLDER';
 
-export default function ApplyForm() {
+// `tours` (list of {slug, name}) comes from the server page that reads the DB.
+export default function ApplyForm({ tours = [] }) {
   const [status, setStatus] = useState('idle'); // idle | sending | ok | error
 
   async function onSubmit(e) {
@@ -62,7 +62,7 @@ export default function ApplyForm() {
         <Field label="Which journey calls you?" name="journey">
           <select id="journey" name="journey" defaultValue="">
             <option value="">I&rsquo;m still deciding</option>
-            {TOURS.map((t) => (
+            {tours.map((t) => (
               <option key={t.slug} value={t.name}>{t.name}</option>
             ))}
           </select>

@@ -1,9 +1,12 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (RETIRED — site moved to Vercel)
 
+# This site moved from a static GitHub Pages export to a server-rendered Next.js app on
+# Vercel (real Google login + a database — see DEPLOY-VERCEL.md). The app no longer does
+# `output: 'export'`, so there is no ./out to publish here. The auto-on-push trigger is
+# disabled so a merge to main can't run a broken Pages build or fight the Vercel deploy.
+# Left manual-only for reference; safe to delete once Vercel is confirmed live.
 on:
-  push:
-    branches: [main]
-  workflow_dispatch: # allow manual runs from the Actions tab
+  workflow_dispatch: # manual only
 
 # Permissions required by the official Pages deploy actions
 permissions:

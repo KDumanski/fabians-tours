@@ -2,15 +2,19 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import SectionReveal from '@/components/SectionReveal';
 import CrewGrid from '@/components/CrewGrid';
+import { getCrew } from '@/lib/data';
 import { IMG } from '@/lib/images';
 import prose from '../prose.module.css';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Our Crew',
   description: 'Meet the Oceanic Ventures crew — the guides, healers, yogis, and water therapists who hold each transformational retreat.',
 };
 
-export default function CrewPage() {
+export default async function CrewPage() {
+  const crew = await getCrew();
   return (
     <>
       <PageHero
@@ -31,7 +35,7 @@ export default function CrewPage() {
           </p>
         </SectionReveal>
 
-        <CrewGrid />
+        <CrewGrid crew={crew} />
 
         <div className="text-center" style={{ marginTop: 'var(--sp-5)' }}>
           <Link href="/apply/" className="btn btn-primary">Begin Your Application</Link>

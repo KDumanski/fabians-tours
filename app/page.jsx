@@ -8,14 +8,20 @@ import TestimonialCarousel from '@/components/TestimonialCarousel';
 import VideoTestimonials from '@/components/VideoTestimonials';
 import CrewGrid from '@/components/CrewGrid';
 import { GlyphRule } from '@/components/Glyph';
-import { RETREATS } from '@/lib/tours';
+import { getRetreats, getCrew, getTestimonials } from '@/lib/data';
 import { ABOUT, IMPACT } from '@/lib/copy';
 import { IMG } from '@/lib/images';
 import styles from './page.module.css';
 
-const FEATURED = RETREATS();
+// Render per request so live admin edits (tours, crew, testimonials) appear immediately.
+export const dynamic = 'force-dynamic';
 
-export default function Home() {
+export default async function Home() {
+  const [FEATURED, crew, testimonials] = await Promise.all([
+    getRetreats(),
+    getCrew(),
+    getTestimonials(),
+  ]);
   return (
     <>
       <Hero />
@@ -98,7 +104,7 @@ export default function Home() {
           </div>
           <Link href="/crew/" className="btn btn-ghost">Meet the Crew</Link>
         </SectionReveal>
-        <CrewGrid limit={4} />
+        <CrewGrid crew={crew} limit={4} />
       </section>
 
       {/* VIDEO TESTIMONIALS — Fabian's own, he asked us to feature these */}
@@ -111,7 +117,7 @@ export default function Home() {
               Short reflections, filmed on the journey.
             </p>
           </SectionReveal>
-          <VideoTestimonials />
+          <VideoTestimonials videos={testimonials.video} />
         </div>
       </section>
 
@@ -121,7 +127,7 @@ export default function Home() {
           <p className="kicker mx-auto">From the Circle</p>
           <h2 className={styles.sectionTitle}>Voices from the journey</h2>
         </SectionReveal>
-        <TestimonialCarousel />
+        <TestimonialCarousel testimonials={testimonials.text} />
       </section>
 
       {/* FINAL CTA */}

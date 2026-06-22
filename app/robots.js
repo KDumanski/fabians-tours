@@ -1,4 +1,4 @@
-const BASE = 'https://fabianstours.example';
+const BASE = process.env.SITE_URL || 'https://fabians-tours.vercel.app';
 
 export const dynamic = 'force-static';
 

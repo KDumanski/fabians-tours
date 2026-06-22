@@ -81,21 +81,31 @@ Set the base path to empty so assets resolve from `/`:
 | Tours / pricing / itineraries | `lib/tours.js` |
 | Testimonials | `lib/testimonials.js` |
 | Images | `lib/images.js` (drop files in `public/` and reference `/file.jpg` to self-host) |
-| Admin username/password | `lib/adminConfig.js` |
+| Admin login allowlist | `lib/allowlist.js` (or `ADMIN_EMAILS` env var) |
 
-## Admin dashboard
+## Admin dashboard (real login + database)
 
-`/admin/` provides a clean dashboard to edit listings (login: see `lib/adminConfig.js`).
+`/admin/` is a real, secure dashboard: **Google login** (restricted to an email
+allowlist) backed by a **Postgres database**. Add / edit / remove tours, crew, and
+testimonials — changes go live instantly, no rebuild.
 
-> ⚠️ **Important — this is a client-side gate, not real authentication.** Because the
-> site is a static export on GitHub Pages, there is no server or database. The admin
-> credentials ship inside the public JS bundle and are **not secure**. Edits are saved
-> to your browser (`localStorage`); to publish them, use **Export tours.json** (or
-> **Copy JSON**) and replace the `TOURS` array in `lib/tours.js`, then commit & push.
->
-> **For real authentication + persistent edits**, host on a platform with serverless
-> functions (Vercel / Netlify) or wire a headless CMS (e.g. Sanity, Contentful) — at
-> that point the dashboard can write to a real datastore behind a real login.
+- **Login allowlist:** `lib/allowlist.js` (`keith.dumanski@gmail.com` +
+  `fabianguhl@gmail.com`; extend with the `ADMIN_EMAILS` env var).
+- **Auth:** Auth.js / NextAuth v5 (`auth.js`, `middleware.js`, `app/api/auth/...`).
+- **Data:** `lib/db.js` (Postgres client) + `lib/data.js` (read helpers). Public pages
+  read live from the DB; the old `lib/tours.js` / `crew.js` / `testimonials.js` are now
+  only the one-time **seed** source (`scripts/seed.mjs`, schema in `scripts/schema.sql`).
+- **Mutations:** server actions in `app/admin/actions.js` (with Vercel Blob image upload).
+
+### Set it up
+
+This requires a one-time setup (Vercel project + Postgres + Google OAuth). Full
+click-by-click guide: **[DEPLOY-VERCEL.md](DEPLOY-VERCEL.md)**. Env vars are documented in
+`.env.local.example`.
+
+> Hosting note: this app is now a **server-rendered Next.js app for Vercel** — it is no
+> longer a static GitHub Pages export. (The `asset()` basePath helper becomes a harmless
+> no-op on Vercel since the site is served from the domain root.)
 
 ## Accessibility & quality
 

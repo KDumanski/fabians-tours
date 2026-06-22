@@ -1,16 +1,17 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SectionReveal from '@/components/SectionReveal';
-import { TOURS, getTour, tourSlugs } from '@/lib/tours';
+import { getTour, getTours } from '@/lib/data';
 import { BRAND } from '@/lib/copy';
 import styles from './detail.module.css';
 
-export function generateStaticParams() {
-  return tourSlugs().map((slug) => ({ slug }));
-}
+// Rendered per request from the DB, so tours added/edited via the admin appear without
+// a rebuild. (No generateStaticParams — dynamic rendering handles every slug on demand.)
+export const dynamic = 'force-dynamic';
 
-export function generateMetadata({ params }) {
-  const tour = getTour(params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const tour = await getTour(slug);
   if (!tour) return { title: 'Journey not found' };
   return {
     title: `${tour.name} — ${tour.subtitle}`,
@@ -19,11 +20,13 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function TourDetail({ params }) {
-  const tour = getTour(params.slug);
+export default async function TourDetail({ params }) {
+  const { slug } = await params;
+  const tour = await getTour(slug);
   if (!tour) notFound();
 
-  const others = TOURS.filter((t) => t.slug !== tour.slug).slice(0, 3);
+  const all = await getTours();
+  const others = all.filter((t) => t.slug !== tour.slug).slice(0, 3);
   const waHref = `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
     `Hi Fabian — I'm interested in "${tour.name}".`
   )}`;
