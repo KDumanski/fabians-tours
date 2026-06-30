@@ -5,7 +5,6 @@ import { getRetreats, getTrainings } from '@/lib/data';
 import { IMG } from '@/lib/images';
 import prose from '../prose.module.css';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'The Retreats',

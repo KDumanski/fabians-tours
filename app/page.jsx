@@ -14,7 +14,6 @@ import { IMG } from '@/lib/images';
 import styles from './page.module.css';
 
 // Render per request so live admin edits (tours, crew, testimonials) appear immediately.
-export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const [FEATURED, crew, testimonials] = await Promise.all([

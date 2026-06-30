@@ -5,7 +5,6 @@ import { getTestimonials } from '@/lib/data';
 import { IMG } from '@/lib/images';
 import styles from './testimonials.module.css';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Testimonials',

@@ -3,7 +3,6 @@ import { getTourSlugs } from '@/lib/data';
 const BASE = process.env.SITE_URL || 'https://fabians-tours.vercel.app';
 
 // Reads tour slugs from the DB, so render on demand rather than at build.
-export const dynamic = 'force-dynamic';
 
 export default async function sitemap() {
   const routes = ['', '/journeys', '/experiences', '/about', '/crew', '/testimonials', '/social-impact', '/apply', '/terms'];
@@ -26,3 +25,5 @@ export default async function sitemap() {
   }));
   return [...staticPages, ...tourPages];
 }
+
+export const dynamic = 'force-static';

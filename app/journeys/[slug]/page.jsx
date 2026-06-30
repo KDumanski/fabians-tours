@@ -7,7 +7,6 @@ import styles from './detail.module.css';
 
 // Rendered per request from the DB, so tours added/edited via the admin appear without
 // a rebuild. (No generateStaticParams — dynamic rendering handles every slug on demand.)
-export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -136,4 +135,9 @@ function Fact({ label, value }) {
       <span className={styles.factValue}>{value}</span>
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  const tours = await getTours();
+  return tours.map((t) => ({ slug: t.slug }));
 }

@@ -6,7 +6,6 @@ import { IMG } from '@/lib/images';
 import { getTours } from '@/lib/data';
 import styles from './apply.module.css';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Apply / Reserve',
